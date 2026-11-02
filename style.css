@@ -1065,7 +1065,7 @@
     opacity: 1;
     animation: none;
 }
-#stvp-font-preview { font-size: 14px; }
+#stvp-font-preview { font-size: 14px; line-height: 1.5; }
 #saipet-settings #stvp-font-preview[data-custom-font] { font-family: var(--spc-font) !important; }
 
 /* 디자인 카드: 작은 말풍선은 실제 디자인 CSS(.stvp-bubble-preview[data-design])를 그대로 쓴다. */
