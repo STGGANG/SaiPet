@@ -2618,11 +2618,10 @@
     outline: none;
 }
 @supports (color: color-mix(in srgb, red 50%, blue)) {
-    .st-pet-menu {
-        border-color: color-mix(in srgb, var(--spc-accent, #7c9bff) 55%, transparent);
-    }
+    /* Solid (pre-mixed) border: a see-through one shows a seam where the tail overlaps the box edge. */
+    .st-pet-menu,
     .st-pet-menu::after {
-        border-color: color-mix(in srgb, var(--spc-accent, #7c9bff) 55%, transparent);
+        border-color: color-mix(in srgb, var(--spc-accent, #7c9bff) 55%, var(--spc-bubble-bg, #ffffff));
     }
     .st-pet-menu button:hover,
     .st-pet-menu button:focus-visible {

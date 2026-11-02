@@ -668,7 +668,7 @@ function setupQuickMenu(container, petId) {
         const shift = rect.left < view.minX + 4 ? view.minX + 4 - rect.left : rect.right > view.maxX - 4 ? view.maxX - 4 - rect.right : 0;
         if (shift) menu.style.translate = `${Math.round(shift)}px 0`;
         const placed = menu.getBoundingClientRect(), anchor = button.getBoundingClientRect();
-        menu.style.setProperty("--menu-arrow-x", `${Math.round(Math.max(14, Math.min(placed.width - 14, anchor.left + anchor.width / 2 - placed.left)))}px`);
+        menu.style.setProperty("--menu-arrow-x", `${Math.round(Math.max(22, Math.min(placed.width - 22, anchor.left + anchor.width / 2 - placed.left)))}px`);
         button.setAttribute("aria-expanded", "true");
         document.addEventListener("pointerdown", onOutside, true);
         document.addEventListener("keydown", onKey, true);

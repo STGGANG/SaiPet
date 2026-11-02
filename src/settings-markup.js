@@ -193,7 +193,7 @@ function aiTab(profileOptions) {
     return `<div class="stvp-tab-content" data-tab="ai" role="tabpanel">
         ${scopeNote("fa-users", "두 펫 모두에 적용됩니다.")}
         ${card({ id: "stvp-api-section", icon: "fa-plug", tint: "ai", title: "API 연결",
-            tip: "말 걸기, 채팅 반응, 펫끼리 대화, 꿈·일기, 알림이 모두 이 연결을 사용합니다.<br>Vertex AI는 global 리전으로 요청하며, 인증 정보는 연결 프로필이나 현재 API 설정을 따릅니다.", body:
+            tip: "말 걸기, 채팅 반응, 펫끼리 대화, 꿈·일기, 알림이 모두 이 연결을 사용합니다.<br>Vertex AI의 리전과 인증 정보는 연결 프로필이나 현재 API 설정을 그대로 따릅니다.", body:
             switchRow("stvp-use-cm", "Connection Manager 사용", { desc: "끄면 지금 실리태번에 연결된 API를 사용합니다" })
             + row("연결 프로필", selectControl("stvp-cm-profile", profileOptions), { attrs: 'id="stvp-cm-profile-row"' })
             + rowPair(row("최대 출력 토큰", numberControl("stvp-max-tokens", { min: 0 }), { desc: "0이면 프리셋 설정" }),

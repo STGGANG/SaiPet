@@ -189,22 +189,14 @@ function applyBubbleStyle(petId = "primary") {
 function getRandomSpeech(speechType, petId = "primary") {
     const validTypes = ["idle", "sleeping", "dragging", "click", "greeting", "latenight", "morning", "clickSpam", "longAbsence", "feeding", "hungry", "petting"];
     const type = validTypes.includes(speechType) ? speechType : "idle";
-
-    const customSpeechesSource = petId === "secondary"
-        ? state.settings.multiPet?.secondPetData?.customSpeeches
-        : state.settings.customSpeeches;
-    const customSpeeches = customSpeechesSource?.[type];
-    if (customSpeeches && customSpeeches.length > 0) {
-        const validCustom = customSpeeches.filter(s => s && s.trim());
-        if (validCustom.length > 0) {
-            const index = Math.floor(Math.random() * validCustom.length);
-            return validCustom[index];
-        }
-    }
-
+    const own = customSpeech(type, petId);
+    if (own) return own;
+    // The stock lines are Miyu's voice; a pet with its own images stays quiet instead of speaking as her.
+    const pet = petId === "secondary" ? state.settings.multiPet?.secondPetData : state.settings;
+    const sprites = pet?.appearance?.customSprites || {};
+    if (Object.values(sprites).some(Boolean) || pet?.walk?.walkSprite) return "";
     const defaultList = DEFAULT_SPEECHES[type] || DEFAULT_SPEECHES.idle;
-    const index = Math.floor(Math.random() * defaultList.length);
-    return defaultList[index];
+    return defaultList[Math.floor(Math.random() * defaultList.length)];
 }
 
 /** Only the user's own lines; an empty list means the pet stays quiet. */
@@ -216,5 +208,5 @@ export function customSpeech(type, petId = "primary") {
 
 export function showStateSpeech(speechType, petId = "primary") {
     const speech = getRandomSpeech(speechType, petId);
-    showSpeechBubble(speech, null, false, petId);
+    if (speech) showSpeechBubble(speech, null, false, petId);
 }
