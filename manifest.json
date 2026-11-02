@@ -1,0 +1,13 @@
+{
+    "display_name": "사이펫",
+    "loading_order": 10,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "STGGANG",
+    "version": "2.0.0",
+    "description": "실리태번 화면 위에서 함께 지내는 동반 캐릭터 확장 프로그램. 채팅을 보고 반응하고 말을 걸 수 있으며, 꿈과 일기, 알림, 여러 캐릭터가 함께 사는 펫하우스를 지원합니다.",
+    "homePage": "https://github.com/STGGANG/SaiPet",
+    "auto_update": true
+}
