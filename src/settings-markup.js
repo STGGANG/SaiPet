@@ -356,7 +356,7 @@ function dataTab(backupCategories) {
                     ${button("stvp-image-trash-purge", "7일 지난 것 영구 삭제", { icon: "fa-fire", tone: "danger" })}
                 </div>`)}` })}
         ${fold({ id: "stvp-reset-drawer", icon: "fa-triangle-exclamation", tint: "danger", title: "초기화", cls: "stvp-danger-zone", body:
-            row("범위", selectControl("stvp-reset-scope", [["settings", "설정만 (프리셋·기록 유지)"], ["presets", "프리셋 보관함만"], ["all", "전부 (모든 데이터)"]], 'aria-label="초기화 범위"'), { stack: true })
+            row("범위", selectControl("stvp-reset-scope", [["settings", "설정만 (프리셋·기록 유지)"], ["records", "기록만 (펫과의 기록만)"], ["presetsRecords", "프리셋과 기록만 (설정은 유지)"], ["all", "전부 (모든 데이터)"]], 'aria-label="초기화 범위"'), { stack: true })
             + button("stvp-reset-all", "선택한 범위 초기화", { icon: "fa-triangle-exclamation", tone: "danger", attrs: 'title="되돌릴 수 없습니다"' }) })}
     </div>`;
 }

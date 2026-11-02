@@ -541,7 +541,8 @@ function bindPresetEvents() {
         const scope = $("#stvp-reset-scope").val();
         const descriptions = {
             settings: "공통 확장 설정을 기본값으로 되돌립니다. 프리셋·현재 캐릭터·기록·개인 메모·등록한 알림·펫하우스 꾸미기는 유지됩니다.",
-            presets: "저장된 캐릭터 프리셋 보관함을 비웁니다. 현재 화면의 캐릭터·공통 설정·기록은 유지됩니다.",
+            records: "대화 기록(펫하우스 대화·알림 기록 포함)과 일기장의 꿈·일기를 지웁니다. 프리셋·현재 캐릭터·설정·개인 메모·알림은 유지됩니다.",
+            presetsRecords: "저장된 프리셋과 대화 기록·꿈·일기를 지웁니다. 현재 화면의 캐릭터·설정·개인 메모·알림은 유지됩니다.",
             all: "프리셋·현재 캐릭터 설정·기록·개인 메모·알림·펫하우스를 포함한 모든 사이펫 데이터를 초기화합니다.",
         };
         if (!descriptions[scope] || !confirm(descriptions[scope] + "\n계속하시겠습니까?")) return;

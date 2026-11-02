@@ -1,14 +1,28 @@
+const SCOPES = ['settings', 'records', 'presetsRecords', 'all'];
+
+function clearRecords(next) {
+    // Conversation logs (house talks included) and the journal; memos, reminders and journal options stay.
+    Object.assign(next.conversationLog ||= {}, { directLogs: {}, chatLogs: {}, interPetLogs: {}, notificationLogs: [] });
+    Object.assign(next.petJournal ||= {}, { dreams: {}, diaries: {}, lastDiaryDates: {}, dreamCounts: {}, dreamCountDate: null });
+    delete next.petJournal.lastDiaryDate;
+    delete next.petJournal.dreamCountToday;
+}
+
+function clearPresets(next) {
+    next.savedPresets = [];
+    // Active characters keep their images and identities, but no longer claim a link to a removed preset.
+    next.currentPresetId = null;
+    if (next.multiPet) next.multiPet.secondPetPresetId = null;
+}
+
 /** Pure reset projections: callers persist atomically and refresh the runtime. */
 export function settingsAfterReset(current, defaults, scope) {
-    if (!['settings', 'presets', 'all'].includes(scope)) throw new Error('알 수 없는 초기화 범위입니다.');
+    if (!SCOPES.includes(scope)) throw new Error('알 수 없는 초기화 범위입니다.');
     if (scope === 'all') return structuredClone(defaults);
-    if (scope === 'presets') {
+    if (scope !== 'settings') {
         const next = structuredClone(current);
-        next.savedPresets = [];
-        // Active characters keep their images, identities and history, but no longer
-        // claim to be linked to a saved preset that has just been removed.
-        next.currentPresetId = null;
-        if (next.multiPet) next.multiPet.secondPetPresetId = null;
+        clearRecords(next);
+        if (scope === 'presetsRecords') clearPresets(next);
         return next;
     }
     const next = structuredClone(defaults);
